@@ -1,0 +1,32 @@
+<div class="callouts wizzardprocessCallouts"
+  id="{{processDefinition.wizzardProcess.id}}"
+  style="background-image:url('{{processDefinition.wizzardProcess.backgroundImage}}')">
+    <div class="container">
+      <div class="modHead">
+        <h2 class="title"><span class="hidden-xs">{{processDefinition.wizzardProcess.title}}</span><a class="visible-xs" href="#"></a></h2>
+      </div>
+      <div class="modContent">
+        <div class="panels">
+          <div class="panel {{$index==0?'active':''}}" ng-repeat='step in processDefinition.wizzardProcess.steps' ng-init='n=$index+1'>
+            <div class="item">
+              <div class="indicator"><span class="text">{{n}}</span></div>
+              <div class="content">
+                <h3 class="title">{{step.title}}</h3>
+                <p>{{step.text}}</p><a class="btn btn-primary" href="{{step.linkUrl}}">{{step.linkText}}</a>
+              </div>
+              <div class="aside">
+                <div class="imageBG" style="background-image:url('{{step.backgroundImage}}')"><span class="sr-only">{{step.itemDescritpion}}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tabs"><a href="#"
+          style="left: {{100.0*(n-1)/(processDefinition.wizzardProcess.steps.length-1)}}%"
+          ng-repeat='step in processDefinition.wizzardProcess.steps'
+          ng-init='n=$index+1'
+          proceed-to-step>{{n}}</a>
+          <span class="indicator hasNext">1</span>
+        </div>
+      </div>
+    </div>
+  </div>
